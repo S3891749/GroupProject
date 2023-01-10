@@ -1,14 +1,13 @@
 public class Product {
-    protected int uniqueId;
-    protected String ProductName;
-    String CurrencyPrice = "VND";
-    protected double Price;
-    protected String Category ="none";
+    private int uniqueId;
+    private String ProductName;
 
-    public Product(int uniqueId, String productName, String currencyPrice, double price, String category) {
+    private double Price;
+    private String Category ="none";
+
+    public Product(int uniqueId, String productName, double price, String category) {
         this.uniqueId = uniqueId;
         ProductName = productName;
-        CurrencyPrice = currencyPrice;
         Price = price;
         Category = category;
     }
@@ -29,14 +28,6 @@ public class Product {
         ProductName = productName;
     }
 
-    public String getCurrencyPrice() {
-        return CurrencyPrice;
-    }
-
-    public void setCurrencyPrice(String currencyPrice) {
-        CurrencyPrice = currencyPrice;
-    }
-
     public double getPrice() {
         return Price;
     }
@@ -53,4 +44,14 @@ public class Product {
         Category = category;
     }
 
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "uniqueId=" + uniqueId +
+                ", ProductName='" + ProductName + '\'' +
+                ", Price=" + Price +
+                ", Category='" + Category + '\'' +
+                '}';
+    }
 }

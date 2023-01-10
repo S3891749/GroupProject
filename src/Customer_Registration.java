@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Customer_Registration {
     protected String username;
     protected String password;
@@ -11,8 +16,11 @@ public class Customer_Registration {
         this.password = password;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        Email = email;
-        Address = address;
+        this.Email = email;
+        this.Address = address;
+    }
+    public void AddCustomer(){
+
     }
 
     @Override
