@@ -12,6 +12,9 @@ public class Product {
         Category = category;
     }
 
+    public Product(int id, String productName) {
+    }
+
     public int getUniqueId() {
         return uniqueId;
     }

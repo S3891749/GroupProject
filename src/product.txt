@@ -1,0 +1,5 @@
+1, Dell, 200, Laptop
+2, Asus, 170, Laptop
+3, Hp  , 150, Laptop
+4, MSI , 300, Laptop
+5, RTX , 100, Equipment

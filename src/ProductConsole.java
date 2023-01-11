@@ -1,14 +1,16 @@
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class ProductConsole {
-    private ProductManager pm;
+    ProductManager pm = new ProductManager();
     Scanner sc = new Scanner(System.in);
 
     public ProductConsole() {
-        this.pm = new ProductManager();
+        this.pm = pm;
         this.sc = sc;
     }
+
 
     private int ManageProduct(){
         System.out.println("______________");
@@ -34,7 +36,7 @@ public class ProductConsole {
         }
         return choice;
     }
-    public void start(){
+    public void start() throws IOException {
         while(true){
             int choice = ManageProduct();
                 switch(choice){
@@ -61,30 +63,46 @@ public class ProductConsole {
         }
 
 
-    public void RemoveProduct() {
+    public void RemoveProduct() throws IOException {
+
         System.out.println("Enter Id of Product: ");
-        int id = sc.nextInt();
-        boolean results = pm.RemoveProduct(id);
-        if(results){
-            System.out.println("Product removed");
-        }
-        else {
-            System.out.println("Product is not found");
-        }
+        String id = sc.next();
+        pm.RemoveProduct("src/product.txt", id);
     }
 
-    public void showAll() {
+
+
+    public void showAll() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        String line, name = null, category = null, price = null, id = null;
+        Scanner scan = new Scanner(new File("src/product.txt"));
+        System.out.println("-------------------");
         System.out.println("All Product");
-        System.out.println("ID\tName\tPrice\tCategory");
-        for (int i = 0; i < this.pm.count(); i++){
+        System.out.println("-------------------");
+        System.out.println("ID\t Name\t\t\tPrice\t\tCategory");
+        while (scan.hasNext()){
+            line = scan.nextLine();
+            StringTokenizer st = new StringTokenizer(line, ",");
+            id = st.nextToken();
+            name = st.nextToken();
+            price = st.nextToken();
+            category = st.nextToken();
+            System.out.println(id + "\t" + name + "\t" + "\t"+ "\t"  + price + "\t" + "\t" + category + "\t");
+        }
+
+        scan.close();
+
+
+
+        /* for (int i = 0; i < this.pm.count(); i++){
             Product p = pm.getProduct(i);
             System.out.println(p.getUniqueId()+ "\t"+ p.getProductName() +"\t"+p.getPrice() +"\t"+ p.getCategory());
-        }
+        }*/
 
     }
 
 
-    public void addProduct() {
+        public void addProduct(){
         System.out.println("Enter product ID: ");
         int id = sc.nextInt();
         System.out.println("Enter product name:");
@@ -93,9 +111,20 @@ public class ProductConsole {
         double price = sc.nextDouble();
         System.out.println("Enter product category: ");
         String category = sc.next();
+        try(FileWriter fw = new FileWriter("src/product.txt", true);
+            BufferedWriter bw1 = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw1))
+        {
+            out.println(id + "," + name + "," + price + "," + category);
+            out.close();
 
-        Product p = new Product(id, name, price, category);
-        this.pm.addProduct(p);
+            bw1.close();
+            fw.close();
+        } catch (IOException e) {
+        }
+
+        new Product(id, name, price, category);
+
     }
 
 }
