@@ -21,8 +21,8 @@ public class Admin {
         System.out.println("2. View Orders Info");
         System.out.println("3. Remove Customer");
         System.out.print("Choose your option: ");
-        int option = scan.nextInt();
-        switch(option) {
+        int choose = scan.nextInt();
+        switch(choose) {
             case 1:
                 viewCustomer_Info();
                 break;

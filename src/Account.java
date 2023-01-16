@@ -15,6 +15,10 @@ public class Account {
         Address = address;
     }
 
+    public Account() {
+
+    }
+
     public String getUsername() {
         return username;
     }
