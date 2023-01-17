@@ -13,6 +13,7 @@ public class Account {
     private String phoneNumber;
     private String Email;
     private String Address;
+    private double TotalSpending = 0;
     String filename = "src/Order.txt";
     File file = new File(filename);
 
@@ -81,7 +82,6 @@ public class Account {
         String name = sc.nextLine();
         System.out.println("Enter Product: ");
         String product = sc.nextLine();
-
         System.out.println("Order successful");
         System.out.println("Your Order Id: ID" + OrderID);
         try {
