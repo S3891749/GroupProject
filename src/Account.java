@@ -55,7 +55,7 @@ public class Account {
         String CustomerID = getUsername();
         String orderID = String.valueOf(ID);
 
-        File originalFile = new File("Order_Info.txt");
+        File originalFile = new File("src/Order.txt");
         BufferedReader br = new BufferedReader(new FileReader(originalFile));
         StringBuilder sb = new StringBuilder();
         String line = "";

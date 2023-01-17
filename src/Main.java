@@ -7,7 +7,7 @@ public class Main {
         AccountConsole ac = new AccountConsole();
         Account a1 = new Account();
         Admin ad = new Admin();
-        a1.CustomerAction();
+        ad.Admin_Action();
 
 
 
