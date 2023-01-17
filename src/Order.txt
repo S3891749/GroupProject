@@ -3,3 +3,5 @@ Bui quang Man,Laptop Gaming,17/01/2023,Delivered, 31726
 Bang Kieu,Macbook,17/01/2023,Delivered, 36055
 
 Dam Vinh Hung,HP Laptop,17/01/2023,Delivered, 91882
+
+manbui,laptop,17/01/2023,41736

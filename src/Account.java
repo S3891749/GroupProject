@@ -27,20 +27,16 @@ public class Account {
     public void CustomerAction() throws IOException {
         Scanner scan = new Scanner(System.in);
         System.out.println("Choose section");
-        System.out.println("1. View Info");
-        System.out.println("2. Create new Order");
-        System.out.println("3. Track your Order");
+        System.out.println("1. Create new Order");
+        System.out.println("2. Track your Order");
 
         System.out.print("Choose your option: ");
         int option = scan.nextInt();
         switch(option){
             case 1:
-                viewInfo();
-                break;
-            case 2:
                 CreateOrder();
                 break;
-            case 3:
+            case 2:
                 TrackOrder();
                 break;
 

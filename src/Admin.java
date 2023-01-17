@@ -19,6 +19,7 @@ public class Admin {
         System.out.println("1. View All Customer Info");
         System.out.println("2. View Orders Info");
         System.out.println("3. Remove Customer");
+        System.out.println("4. Manage Product");
         System.out.print("Choose your option: ");
         int choose = scan.nextInt();
         switch(choose) {
@@ -31,6 +32,9 @@ public class Admin {
             case 3:
                 Remove();
                 break;
+            case 4:
+                ProductConsole pc = new ProductConsole();
+                pc.start();
         }
     }
     public void Remove() throws IOException {
@@ -40,11 +44,53 @@ public class Admin {
         String id = sc.next();
         RemoveCustomer("src/Customer_Info.txt", id);
     }
+    public void LoginOrNot() throws FileNotFoundException {
+        do{
+            boolean isLogin = verifyLogin();
+            if(isLogin){
+                System.out.println("Login successful!");
+                break;
+            }
+            else{
+                System.out.println("Login fail!");
+            }
+        }
+        while(true);
+    }
+    public static boolean verifyLogin() throws FileNotFoundException {
+        boolean isAuthenticated = false;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter username: ");
+        String user = sc.next();
+        System.out.println("Enter password: ");
+        String pass = sc.next();
+        String path = "src/Admin_Login.txt";
+        File file = new File(path);
+        try{
+            Scanner inputBuffer = new Scanner(file);
+
+            while(inputBuffer.hasNext()){
+                String line = inputBuffer.nextLine();
+                String[] values = line.split(",");
+                if(values[0].equals(user)){
+                    if(values[1].equals(pass)){
+                        isAuthenticated = true;
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return isAuthenticated;
+
+    }
 
 
 
     public void login() throws IOException {
         Scanner FileScan = new Scanner(new File("Admin_Login.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("src/Admin_Login.txt"));
         Scanner scan = new Scanner(System.in);
         boolean foundUser = false;
 

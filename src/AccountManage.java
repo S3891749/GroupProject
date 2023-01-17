@@ -23,6 +23,7 @@ public class AccountManage {
             boolean isLogin = verifyLogin();
             if(isLogin){
                 System.out.println("Login successful!");
+                break;
             }
             else{
                 System.out.println("Login fail!");
