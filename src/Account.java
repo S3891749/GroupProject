@@ -60,7 +60,7 @@ public class Account {
 
         while ((line = br.readLine()) != null){
             if (line.endsWith(orderID)){
-                System.out.println("CustomerID,OrderID,Date,Status");
+                System.out.println("CustomerName,Product,Date,OrderID");
                 System.out.println(line);
                 System.out.println();
             }

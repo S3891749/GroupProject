@@ -7,3 +7,7 @@ Dam Vinh Hung,HP Laptop,17/01/2023,Delivered, 91882
 manbui,laptop,17/01/2023,41736
 
 manbui,laptop,17/01/2023,98380
+
+buiQuangman,laptop,17/01/2023,48460
+
+man,laptop,17/01/2023,86625
