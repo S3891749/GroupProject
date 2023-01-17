@@ -24,20 +24,6 @@ public class ProductManager{
         return this.ListOfProduct.get(index);
 
     }
-   /* public boolean RemoveProduct(int id){
-        int index = -1;
-        for (int i = 0, n = count(); i < n; i++){
-            if (this.ListOfProduct.get(i).getUniqueId() == id){
-                index = i;
-                break;
-            }
-        }
-        if (index != -1){
-            this.ListOfProduct.remove(index);
-            return true;
-        }
-        return false;
-    }*/
 
 
     public int count() {

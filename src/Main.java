@@ -5,7 +5,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         AccountConsole ac = new AccountConsole();
-        ac.UserAccount();
+        Account a1 = new Account();
+        Admin ad = new Admin();
+        a1.CustomerAction();
 
 
 

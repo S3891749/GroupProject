@@ -1,4 +1,3 @@
-import javax.sound.sampled.Line;
 import java.io.*;
 import java.util.Scanner;
 
@@ -30,15 +29,20 @@ public class Admin {
                 viewAllOrdersInfo();
                 break;
             case 3:
-                removeCustomer();
+                Remove();
                 break;
-
         }
+    }
+    public void Remove(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter id you want to remove: ");
+        String line = sc.nextLine();
+        RemoveCustomer("Admin_Login.txt", line);
     }
 
 
     public void login() throws IOException {
-        Scanner FileScan = new Scanner(new File("Admin_Login_Info.txt"));
+        Scanner FileScan = new Scanner(new File("Admin_Login.txt"));
         Scanner scan = new Scanner(System.in);
         boolean foundUser = false;
 
@@ -68,45 +72,48 @@ public class Admin {
         }
     }
 
-   
-    public void removeCustomer() throws IOException {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("List of members: ");
-        viewCustomer_Info();
 
-        System.out.println("Select the user you want to remove by copying and paste the line you want to remove: ");
-        String LineToDelete =scan.nextLine();
-        File inputFile = new File("Data.txt");
-        File tempFile = new File("temp_file.txt");
-
-        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
+    public static void RemoveCustomer(String filepath, String deleteLine){
+        String tempFile = "temp.txt";
+        File oldFile = new File("src/Customer_Info.txt");
+        File newFile = new File(tempFile);
+        int line = 0;
         String currentLine;
+        try{
+            FileWriter fw = new FileWriter(tempFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
 
-        while((currentLine = reader.readLine()) != null) {
+            FileReader fr = new FileReader(filepath);
+            BufferedReader br = new BufferedReader(fr);
 
-            if(currentLine.startsWith(LineToDelete))
-            writer.write(currentLine);
+            while((currentLine = br.readLine()) != null){
+                line++;
+                if (!currentLine.startsWith(deleteLine)) {
+                    pw.println(currentLine);
+                }
+            }
+            pw.flush();
+            pw.close();
+            fr.close();
+            br.close();
+            bw.close();
+            fw.close();
+
+            oldFile.delete();
+            File dump = new File(filepath);
+            newFile.renameTo(dump);
+
+        }catch (Exception e){
+
         }
-        writer.close();
-        reader.close();
-
-
-        inputFile.delete();
-        tempFile.renameTo(inputFile);
-
-        System.out.println("Line removed");
-        System.out.println("List of members after removing: ");
-        viewCustomer_Info();
-
     }
 
     
     public void viewCustomer_Info(){
         try
         {
-            File file=new File("/Users/buiman/IdeaProjects/GroupWork/src/Data.txt");
+            File file=new File("/Users/buiman/IdeaProjects/GroupWork/src/Customer_Info.txt");
             FileReader fr=new FileReader(file);   
             BufferedReader br=new BufferedReader(fr);  
             StringBuffer sb=new StringBuffer();    
@@ -142,7 +149,7 @@ public class Admin {
             }
             fr.close();    
 
-            System.out.println(sb.toString());   
+            System.out.println(line);
         }
         catch(IOException e)
         {

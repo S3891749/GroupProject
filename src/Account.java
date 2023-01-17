@@ -1,3 +1,11 @@
+import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+import java.util.Scanner;
+
 public class Account {
     private String username;
     private String password;
@@ -5,8 +13,10 @@ public class Account {
     private String phoneNumber;
     private String Email;
     private String Address;
+    String filename = "src/Order.txt";
+    File file = new File(filename);
 
-    public Account(String username, String password, String fullName, String phoneNumber, String email, String address) {
+    public Account(String username, String password, String fullName, String phoneNumber, String email, String address) throws IOException {
         this.username = username;
         this.password = password;
         this.fullName = fullName;
@@ -14,9 +24,98 @@ public class Account {
         Email = email;
         Address = address;
     }
+    public void CustomerAction() throws IOException {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Choose section");
+        System.out.println("1. View Info");
+        System.out.println("2. Create new Order");
 
-    public Account() {
+        System.out.print("Choose your option: ");
+        int option = scan.nextInt();
+        switch(option){
+            case 1:
+                viewInfo();
+                break;
+            case 2:
+                CreateOrder();
+                break;
+            case 3:
+                TrackOrder();
+                break;
 
+        }
+    }
+
+
+    public void TrackOrder() throws IOException {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter your orderID: ");
+        int ID = scan.nextInt();
+
+        String CustomerID = getUsername();
+        String orderID = String.valueOf(ID);
+
+        File originalFile = new File("Order_Info.txt");
+        BufferedReader br = new BufferedReader(new FileReader(originalFile));
+        StringBuilder sb = new StringBuilder();
+        String line = "";
+
+        while ((line = br.readLine()) != null){
+            if (line.endsWith(orderID)){
+                System.out.println("CustomerID,OrderID,Date,Status");
+                System.out.println(line);
+                System.out.println();
+            }
+        }
+    }
+
+    public void CreateOrder() throws IOException {
+        Scanner sc = new Scanner(System.in);
+
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String CurrentDate = dateFormat.format(date);
+
+        int id;
+        Random randomNumber = new Random();
+        id = randomNumber.nextInt(99999);
+        String OrderID= Integer.toString(id);
+        System.out.println("Enter name: ");
+        String name = sc.nextLine();
+        System.out.println("Enter Product: ");
+        String product = sc.nextLine();
+
+        System.out.println("Order successful");
+        System.out.println("Your Order Id: ID" + OrderID);
+        try {
+            FileWriter fw = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+                bw.append("\n" + name + "," + product + "," + CurrentDate + "," + OrderID + "\n");
+                bw.close();
+                fw.close();
+            } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+
+    private void viewInfo() throws IOException {
+        File originalFile = new File("src/Order.txt");
+        BufferedReader br = new BufferedReader(new FileReader(originalFile));
+        StringBuilder sb = new StringBuilder();
+        String line = "";
+
+        while ((line = br.readLine()) != null){
+                System.out.println(line);
+        }
+
+    }
+
+
+    public Account() throws IOException {
     }
 
     public String getUsername() {

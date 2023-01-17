@@ -1,4 +1,5 @@
-1, SonTung, Laptop, 25/12, delivered
-2, TuanHung, PC, 27/12, delivered
-3, bangKieu, Laptop, 21/12, delivered
-2, DuyManh, PC, 30/12, delivered
+Bui quang Man,Laptop Gaming,17/01/2023,Delivered, 31726
+
+Bang Kieu,Macbook,17/01/2023,Delivered, 36055
+
+Dam Vinh Hung,HP Laptop,17/01/2023,Delivered, 91882

@@ -93,12 +93,6 @@ public class ProductConsole {
         scan.close();
 
 
-
-        /* for (int i = 0; i < this.pm.count(); i++){
-            Product p = pm.getProduct(i);
-            System.out.println(p.getUniqueId()+ "\t"+ p.getProductName() +"\t"+p.getPrice() +"\t"+ p.getCategory());
-        }*/
-
     }
 
 
