@@ -73,7 +73,7 @@ public class Admin {
     }
 
 
-    public static void RemoveCustomer(String filepath, String deleteline){
+    public static void RemoveCustomer(String filepath, String deleteLine){
         String tempFile = "temp.txt";
         File oldFile = new File("src/Customer_Info.txt");
         File newFile = new File(tempFile);
@@ -89,7 +89,7 @@ public class Admin {
 
             while((currentLine = br.readLine()) != null){
                 line++;
-                if (currentLine.startsWith(deleteline)) {
+                if (!currentLine.startsWith(deleteLine)) {
                     pw.println(currentLine);
                 }
             }

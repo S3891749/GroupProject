@@ -1,0 +1,5 @@
+1,Dell XPS 17,5.5,Laptop
+3,Samsung Galaxy S22,4.5,Phone
+4,Iphone 13 PM,7.5,Phone
+5,Harman Kardon,3.5,Earbud
+6-2014,Marshall,6,Headset
