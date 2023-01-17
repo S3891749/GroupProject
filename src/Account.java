@@ -29,6 +29,7 @@ public class Account {
         System.out.println("Choose section");
         System.out.println("1. View Info");
         System.out.println("2. Create new Order");
+        System.out.println("3. Track your Order");
 
         System.out.print("Choose your option: ");
         int option = scan.nextInt();

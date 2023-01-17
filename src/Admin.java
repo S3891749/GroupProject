@@ -33,12 +33,14 @@ public class Admin {
                 break;
         }
     }
-    public void Remove(){
+    public void Remove() throws IOException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter id you want to remove: ");
-        String line = sc.nextLine();
-        RemoveCustomer("Admin_Login.txt", line);
+
+        System.out.println("Enter Id of Customer: ");
+        String id = sc.next();
+        RemoveCustomer("src/Customer_Info.txt", id);
     }
+
 
 
     public void login() throws IOException {
